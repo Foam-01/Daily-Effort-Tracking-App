@@ -4,36 +4,42 @@ A personal performance tracking application designed to record and evaluate dail
 
 🔧 Tech Stack
 
-Frontend: React.js
+- Frontend: React.js
 
-Styling: Inline CSS (Custom Optimized for all environments)
+- Styling: Inline CSS (Custom Optimized for all environments)
 
-Icons: Lucide React / Inline SVG
+- Icons: Lucide React / Inline SVG
 
-Tools: GitHub, Local Storage API
+- Tools: GitHub, Local Storage API
 
 🚀 Features
 
-📊 Dynamic Scoring: Multi-category evaluation system (Work, Exercise, Learning, Future/Portfolio).
+- 📊 Dynamic Scoring: Multi-category evaluation system (Work, Exercise, Learning, Future/Portfolio).
 
-🌟 Bonus Points: Special +5% bonuses for overcoming procrastination or practicing quality self-care.
+- 🌟 Bonus Points: Special +5% bonuses for overcoming procrastination or practicing quality self-care.
 
-📅 Calendar Visualization: Monthly overview with color-coded success levels.
+- 📅 Calendar Visualization: Monthly overview with color-coded success levels.
 
-💾 Local Storage Persistence: All data is saved directly in your browser; no server required.
+- 💾 Local Storage Persistence: All data is saved directly in your browser; no server required.
 
-📈 Monthly Insights: Quick summaries of recorded days and average effort scores.
+- 📈 Monthly Insights: Quick summaries of recorded days and average effort scores.
 
-📱 Responsive Design: Fully optimized for both Desktop and Mobile devices.
+- 📱 Responsive Design: Fully optimized for both Desktop and Mobile devices.
+
+
+
 
 
 📊 Scoring Criteria
 
-🔴 10% - 45%: Low Effort (Keep pushing to build discipline)
+- 🔴 10% - 45%: Low Effort (Keep pushing to build discipline)
 
-🟡 46% - 70%: Good Effort (Satisfactory standard)
+- 🟡 46% - 70%: Good Effort (Satisfactory standard)
 
-🟢 71% - 100%: Maximum Effort (You owned the day!)
+- 🟢 71% - 100%: Maximum Effort (You owned the day!)
+
+
+
 
 🖥️ Screenshots
 
@@ -45,7 +51,7 @@ Tools: GitHub, Local Storage API
 
 ## 🔗 Live Demo & Repository
 
-- 🔴 **Live Demo**: https://thai-english-dictionary.netlify.app/
+- 🔴 **Live Demo**: [https://thai-english-dictionary.netlify.app/](https://daily-effort-tracking-app.netlify.app/)
 - 📦 **GitHub**: [https://github.com/Foam-01/Daily-Effort-Tracking-App](https://github.com/Foam-01/Daily-Effort-Tracking-App)
 
 
