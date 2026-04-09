@@ -1,17 +1,60 @@
-# React + Vite
+🏆 My Full Effort - Daily Effort Tracking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal performance tracking application designed to record and evaluate daily effort. Build discipline and monitor your progress across work, health, learning, and future goals. This app is built on the philosophy: "Do your best every day so you won't regret looking back."
 
-Currently, two official plugins are available:
+🔧 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Frontend: React.js
 
-## React Compiler
+Styling: Inline CSS (Custom Optimized for all environments)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Icons: Lucide React / Inline SVG
 
-## Expanding the ESLint configuration
+Tools: GitHub, Local Storage API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# Daily-Effort-Tracking-App" 
+🚀 Features
+
+📊 Dynamic Scoring: Multi-category evaluation system (Work, Exercise, Learning, Future/Portfolio).
+
+🌟 Bonus Points: Special +5% bonuses for overcoming procrastination or practicing quality self-care.
+
+📅 Calendar Visualization: Monthly overview with color-coded success levels.
+
+💾 Local Storage Persistence: All data is saved directly in your browser; no server required.
+
+📈 Monthly Insights: Quick summaries of recorded days and average effort scores.
+
+📱 Responsive Design: Fully optimized for both Desktop and Mobile devices.
+
+🖥️ Screenshots
+
+(Insert application screenshots or GIFs here)
+
+📊 Scoring Criteria
+
+🔴 10% - 45%: Low Effort (Keep pushing to build discipline)
+
+🟡 46% - 70%: Good Effort (Satisfactory standard)
+
+🟢 71% - 100%: Maximum Effort (You owned the day!)
+
+🔗 Repository
+
+GitHub: https://github.com/Foam-01/Daily-Effort-Tracking-App
+
+🏁 Getting Started
+
+# 1. Clone the repository
+git clone [https://github.com/Foam-01/Daily-Effort-Tracking-App.git](https://github.com/Foam-01/Daily-Effort-Tracking-App.git)
+
+# 2. Enter the project directory
+cd daily-effort-tracking-app
+
+# 3. Install dependencies
+npm install
+
+# 4. Run the project
+npm run dev
+
+
+Recording progress for our future selves.
