@@ -1,4 +1,4 @@
-<img width="1918" height="959" alt="Screenshot 2026-04-09 155759" src="https://github.com/user-attachments/assets/ee7909c8-876b-4f40-a4e3-a5d41314803a" /><img width="1917" height="965" alt="Screenshot 2026-04-09 155751" src="https://github.com/user-attachments/assets/fda41aa5-5505-4047-8553-9890e4687d0a" />🏆 My Full Effort - Daily Effort Tracking App
+🏆 My Full Effort - Daily Effort Tracking App
 
 A personal performance tracking application designed to record and evaluate daily effort. Build discipline and monitor your progress across work, health, learning, and future goals. This app is built on the philosophy: "Do your best every day so you won't regret looking back."
 
