@@ -6,7 +6,7 @@ A personal performance tracking application designed to record and evaluate dail
 
 - Frontend: React.js
 
-- Styling: Inline CSS (Custom Optimized for all environments)
+- Styling: Inline CSS 
 
 - Icons: Lucide React / Inline SVG
 
