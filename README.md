@@ -51,8 +51,7 @@ A personal performance tracking application designed to record and evaluate dail
 <img width="1908" height="954" alt="image" src="https://github.com/user-attachments/assets/b35721f1-090e-46bb-853f-b9e9c8a9e7c4" />
 <img width="1908" height="964" alt="image" src="https://github.com/user-attachments/assets/2781f86e-38f5-4ab2-b46a-545f316830da" />
 <img width="1917" height="965" alt="image" src="https://github.com/user-attachments/assets/03f06f34-2fc3-4aaf-b50c-d418098a7583" />
-
-
+<img width="1911" height="912" alt="image" src="https://github.com/user-attachments/assets/4c425463-09e1-4a5d-ae14-1116e5ba2350" />
 
 
 ## 🔗 Live Demo & Repository
