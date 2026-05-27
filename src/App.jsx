@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // คีย์สำหรับเก็บข้อมูลใน Local Storage
 const STORAGE_KEY = "effort_tracker_data_v1";
@@ -108,17 +108,6 @@ const IconBook = () => (
     <path d="M8 11h8" />
   </svg>
 );
-const IconStar = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    style={{ color: COLORS.primary }}
-  >
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
-);
 const IconSave = () => (
   <svg
     width="20"
@@ -133,6 +122,34 @@ const IconSave = () => (
     <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
     <polyline points="17 21 17 13 7 13 7 21" />
     <polyline points="7 3 7 8 15 8" />
+  </svg>
+);
+const IconDownload = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+const IconUpload = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="17 8 12 3 7 8" />
+    <line x1="12" y1="3" x2="12" y2="15" />
   </svg>
 );
 
@@ -150,6 +167,8 @@ const App = () => {
     bonusSelfCare: false,
     note: "",
   });
+
+  const fileInputRef = useRef(null);
 
   // โหลดข้อมูล
   useEffect(() => {
@@ -192,6 +211,60 @@ const App = () => {
     }
   };
 
+  // ฟังก์ชัน Export ข้อมูลเป็นไฟล์ JSON ดาวน์โหลดลงเครื่องคอมพิวเตอร์
+  const exportBackup = () => {
+    const dataStr =
+      "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(logs, null, 2));
+    const downloadAnchor = document.createElement("a");
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute(
+      "download",
+      `my_full_effort_backup_${toLocalYYYYMMDD(new Date())}.json`,
+    );
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
+
+  // ฟังก์ชัน Import นำไฟล์ข้อมูลสำรองกลับเข้าสู่ระบบ
+  const handleImportBackup = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const parsedData = JSON.parse(e.target.result);
+
+        // ตรวจสอบความถูกต้องโครงสร้างของ JSON วัตถุ
+        if (typeof parsedData === "object" && parsedData !== null) {
+          if (
+            window.confirm(
+              `คุณต้องการนำเข้าข้อมูลใช่หรือไม่? ข้อมูลเดิมในระบบบนเครื่องนี้จะถูกเขียนทับด้วยข้อมูลจากไฟล์ที่คุณเลือก`,
+            )
+          ) {
+            setLogs(parsedData);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(parsedData));
+
+            // อัปเดตข้อมูลแบบฟอร์มหากมีข้อมูลของวันที่เลือกอยู่
+            if (parsedData[selectedDate]) {
+              setFormData(parsedData[selectedDate]);
+            }
+            alert("นำเข้าข้อมูลความพยายามสำเร็จเรียบร้อยแล้วครับ! 🎉");
+          }
+        } else {
+          alert("รูปแบบไฟล์ข้อมูลสำรองไม่ถูกต้อง");
+        }
+      } catch (err) {
+        alert(
+          "เกิดข้อผิดพลาดในการอ่านไฟล์ กรุณาตรวจสอบว่าเป็นไฟล์ JSON ที่ถูกต้อง",
+        );
+      }
+    };
+    reader.readAsText(file);
+  };
+
   const handleDateClick = (dateStr) => {
     setSelectedDate(dateStr);
     if (logs[dateStr]) setFormData(logs[dateStr]);
@@ -210,8 +283,8 @@ const App = () => {
 
   const getDayColor = (score) => {
     if (score === 0) return { bg: "#f8fafc", text: "#94a3b8" };
-    if (score <= 45) return { bg: "#fee2e2", text: "#ef4444" }; // ปรับเป็น 10-45%
-    if (score <= 70) return { bg: "#fef9c3", text: "#ca8a04" }; // ปรับเป็น 46-70%
+    if (score <= 45) return { bg: "#fee2e2", text: "#ef4444" }; // 10-45%
+    if (score <= 70) return { bg: "#fef9c3", text: "#ca8a04" }; // 46-70%
     return { bg: "#dcfce7", text: "#16a34a" }; // 71-100%
   };
 
@@ -258,6 +331,8 @@ const App = () => {
       alignItems: "center",
       marginBottom: "10px",
       textAlign: "left",
+      flexWrap: "wrap",
+      gap: "15px",
     },
     card: {
       background: COLORS.card,
@@ -338,6 +413,20 @@ const App = () => {
       transition: "0.3s",
       marginTop: "10px",
     },
+    backupBtn: {
+      padding: "10px 16px",
+      background: "#ffffff",
+      color: COLORS.text,
+      border: `1px solid ${COLORS.border}`,
+      borderRadius: "12px",
+      fontSize: "13px",
+      fontWeight: "600",
+      cursor: "pointer",
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      transition: "0.2s",
+    },
   };
 
   return (
@@ -370,69 +459,103 @@ const App = () => {
           </div>
           <div
             style={{
-              background: "white",
-              padding: "15px 25px",
-              borderRadius: "20px",
-              border: `1px solid ${COLORS.border}`,
               display: "flex",
               alignItems: "center",
               gap: "15px",
+              flexWrap: "wrap",
             }}
           >
+            {/* ปุ่มระบบสำรองและกู้คืนข้อมูล */}
+            <div style={{ display: "flex", gap: "8px" }}>
+              <button
+                onClick={exportBackup}
+                style={s.backupBtn}
+                title="สำรองข้อมูลเป็นไฟล์ลงเครื่องคอมพิวเตอร์"
+              >
+                <IconDownload /> สำรองข้อมูล
+              </button>
+              <button
+                onClick={() => fileInputRef.current.click()}
+                style={s.backupBtn}
+                title="นำเข้าข้อมูลความพยายามจากไฟล์สำรอง"
+              >
+                <IconUpload /> นำเข้าข้อมูล
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleImportBackup}
+                accept=".json"
+                style={{ display: "none" }}
+              />
+            </div>
+
             <div
               style={{
-                borderRight: `2px solid ${COLORS.border}`,
-                paddingRight: "15px",
-                textAlign: "center",
+                background: "white",
+                padding: "15px 25px",
+                borderRadius: "20px",
+                border: `1px solid ${COLORS.border}`,
+                display: "flex",
+                alignItems: "center",
+                gap: "15px",
               }}
             >
               <div
                 style={{
-                  fontSize: "11px",
-                  color: COLORS.textLight,
-                  fontWeight: "bold",
+                  borderRight: `2px solid ${COLORS.border}`,
+                  paddingRight: "15px",
+                  textAlign: "center",
                 }}
               >
-                วันนี้
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: COLORS.textLight,
+                    fontWeight: "bold",
+                  }}
+                >
+                  วันนี้
+                </div>
+                <div
+                  style={{
+                    fontSize: "28px",
+                    fontWeight: "900",
+                    color: COLORS.primary,
+                  }}
+                >
+                  {logs[toLocalYYYYMMDD(new Date())]?.totalScore || 0}%
+                </div>
               </div>
-              <div
-                style={{
-                  fontSize: "28px",
-                  fontWeight: "900",
-                  color: COLORS.primary,
-                }}
-              >
-                {logs[toLocalYYYYMMDD(new Date())]?.totalScore || 0}%
+              <div style={{ display: "flex", gap: "5px" }}>
+                <div
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                    background: COLORS.danger,
+                  }}
+                  title="10-45%"
+                ></div>
+                <div
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                    background: COLORS.warning,
+                  }}
+                  title="46-70%"
+                ></div>
+                <div
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                    background: COLORS.success,
+                  }}
+                  title="71-100%"
+                ></div>
               </div>
-            </div>
-            <div style={{ display: "flex", gap: "5px" }}>
-              <div
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: COLORS.danger,
-                }}
-                title="10-45%"
-              ></div>
-              <div
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: COLORS.warning,
-                }}
-                title="46-70%"
-              ></div>
-              <div
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: COLORS.success,
-                }}
-                title="71-100%"
-              ></div>
             </div>
           </div>
         </header>
