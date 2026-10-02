@@ -52,7 +52,14 @@ A personal performance tracking application designed to record and evaluate dail
 <img width="1908" height="964" alt="image" src="https://github.com/user-attachments/assets/2781f86e-38f5-4ab2-b46a-545f316830da" />
 <img width="1917" height="965" alt="image" src="https://github.com/user-attachments/assets/03f06f34-2fc3-4aaf-b50c-d418098a7583" />
 <img width="1911" height="912" alt="image" src="https://github.com/user-attachments/assets/4c425463-09e1-4a5d-ae14-1116e5ba2350" />
-<img width="1912" height="914" alt="image" src="https://github.com/user-attachments/assets/8ab1b276-8380-44ab-98e3-afc87b7e4161" />
+<img width="917" height="876" alt="image" src="https://github.com/user-attachments/assets/59fc7122-95c6-4fc8-82f0-933be3a95678" />
+<img width="888" height="870" alt="image" src="https://github.com/user-attachments/assets/33055c10-4ab6-4ea4-ab36-6b11ee13c7b2" />
+<img width="872" height="873" alt="image" src="https://github.com/user-attachments/assets/a47aa636-b849-4f8f-8996-03421faf2ccc" />
+<img width="871" height="862" alt="image" src="https://github.com/user-attachments/assets/6e47fa89-f409-4268-bc0e-1d56197733ce" />
+<img width="852" height="862" alt="image" src="https://github.com/user-attachments/assets/62c55839-a164-4960-9104-b633b8b9e120" />
+<img width="850" height="862" alt="image" src="https://github.com/user-attachments/assets/c3139079-07fd-45a1-9faf-472e90106a58" />
+<img width="885" height="857" alt="image" src="https://github.com/user-attachments/assets/370613b3-9568-41a0-abd2-b8558341efc4" />
+
 
 
 ## 🔗 Live Demo & Repository
